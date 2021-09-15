@@ -25,7 +25,7 @@ a {
     @include transition(all 0.2s linear);
 }
 
-h1 {
+h1, h2 {
     text-shadow: 0 0 0.3em #fff, 0 0 0.3em #fff, 0 0 0.3em #fff, 0 0 0.3em #fff, 0 0 0.3em #fff;
 }
 
