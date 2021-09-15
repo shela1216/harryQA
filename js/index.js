@@ -17,6 +17,8 @@
                 for (var i = 0; i < this.allContent.length; i++) {
                     if (this.allContent[i].question.indexOf(this.searchTxt) != -1) {
                         newList.push(this.allContent[i])
+                    }else if(this.allContent[i].answer.indexOf(this.searchTxt) != -1){
+                        newList.push(this.allContent[i])
                     }
                 }
                 return newList
@@ -29,7 +31,7 @@
         created: function() {
             var xhr = new XMLHttpRequest();
             var self = this;
-            xhr.open("GET", "https://spreadsheets.google.com/feeds/list/1zMmNIMdqG1tbUrPmudvc2dGnqEvXflynI5U5-5J9WxU/1/public/values?alt=json");
+            xhr.open("GET", "/images/qa.json");
             xhr.send();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
@@ -37,9 +39,9 @@
                         var data = JSON.parse(xhr.responseText);
                         var ListData = [];
                         var str;
-                        for (var i = 0; i < data['feed']['entry'].length; i++) {
+                        for (var i = 0; i < data.length; i++) {
                             if (i > 0) {
-                                str = { question: data['feed']['entry'][i]['gsx$question']['$t'], answer: data['feed']['entry'][i]['gsx$answer']['$t'] }
+                                str = { question: data[i]['question'], answer: data[i]['answer'] }
                                 ListData.push(str);
                             }
                         }
