@@ -1,0 +1,19 @@
+@function grid($i){
+	@return $i * $grid-width + ($i - 1) * $gutter-width;
+}
+@mixin grid($i) {
+	width: grid($i);
+	margin: $gutter-width $gutter-width *.5;
+}
+
+@mixin image-backgound($path,$cache:false) {
+	background: image-url($path,false,$cache);
+	width: image-width($path);
+	height: image-height($path);
+	@extend %indent;
+}
+
+@mixin fontfamily($font:Arial){
+	font-family: $font;
+
+}
